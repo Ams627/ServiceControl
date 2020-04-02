@@ -17,7 +17,7 @@ namespace ServiceControl
             try
             {
 
-//                PrintServicesFromRegistry();
+                PrintServicesFromRegistry();
                 ServiceController service = new ServiceController("WpnService");
                 Console.WriteLine($"service status is {service.Status}");
 
@@ -77,6 +77,14 @@ namespace ServiceControl
                         foreach (var subkeyName in subkeyNames)
                         {
                             Console.WriteLine($"{subkeyName}");
+                            using (var k2 = key.OpenSubKey(subkeyName))
+                            {
+                                var image = k2.GetValue("ImagePath");
+                                if (image != null)
+                                {
+                                    Console.WriteLine($"    {image}");
+                                }
+                            }
                         }
                     }
                 }
