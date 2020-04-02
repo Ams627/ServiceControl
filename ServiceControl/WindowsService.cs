@@ -1,0 +1,7 @@
+﻿namespace ServiceControl
+{
+    class WindowsService
+    {
+
+    }
+}
